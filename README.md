@@ -18,15 +18,15 @@ Semi-Automated Install (Not using install.sh)
 
 2. Create a symbolic link called reason from your document root directory to ./reason_4.0/www/
 
-Example: ln -s /absolute/path/to/reason_package/reason_4.0/www/ /absolute/path/to/document_root/reason
+   Example: `ln -s /absolute/path/to/reason_package/reason_4.0/www/ /absolute/path/to/document_root/reason`
 
 3. Create a symbolic link called reason_package your document root directory to ./www/
 
-Example: ln -s /absolute/path/to/reason_package/www/ /absolute/path/to/document_root/reason_package
+   Example: `ln -s /absolute/path/to/reason_package/www/ /absolute/path/to/document_root/reason_package`
 
 4. Visit /reason/setup.php in your web browser.
 
-For manual installation instructions, see ./reason_4.0/www/install.htm
+   For manual installation instructions, see ./reason_4.0/www/install.htm
 
 Upgrade
 -------
