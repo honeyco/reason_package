@@ -7,7 +7,13 @@
  * @todo remove by Reason 4 RC 1
  */
 
-$path = dirname($_SERVER['REQUEST_URI']) . '/reason_4.0/www/setup.php';
+$base = dirname($_SERVER['REQUEST_URI']);
+
+if ($base == '/') {
+  $base = '';
+}
+
+$path = $base . '/reason_4.0/www/setup.php';
 header("Location: " . $path);
 exit;
 ?>
