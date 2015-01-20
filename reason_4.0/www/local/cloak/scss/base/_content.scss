@@ -1,0 +1,23 @@
+// Content Styles
+// Cloak, v1
+
+// These are the styles that are produced by the WYWIWIG editor.
+
+//  Other WYSIWIG content areas? Blurbs, etc?
+
+// General text styles are determined by Typography styles in _settings.scss.
+
+h2.pageTitle {
+	margin: 0 0 $horizontal-gutter/1.5;
+	line-height: 1.3;
+}
+
+#pageContent {
+	@include clearfix;
+	//border: 1px solid red;
+	margin-bottom: $horizontal-gutter - $paragraph-margin-bottom;
+
+	> * {
+		//border: 1px solid green;	
+	}
+}

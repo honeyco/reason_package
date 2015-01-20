@@ -1,0 +1,493 @@
+// Publication Styles
+// Cloak, v1
+
+// Column Layout
+// This has been moved to base/_common.scss.
+// Remove when sure that we didn't lose anything in the process
+//#meat {
+
+	// .publication {
+	// 	@include grid-row();
+
+	// 	.persistent {
+	// 		margin-bottom: $column-gutter;
+	// 	}
+
+	// 	.moduleNav {
+	// 		margin-bottom: $column-gutter;
+	// 	}
+	// }
+		
+	// // 3 column layout. Page has content, related, and navigation.
+	// &.containsConRelNav {
+
+	// 	.publication {
+
+	// 		.persistent {
+	// 			@include grid-column($columns:12, $collapse:true);
+	// 		}
+
+	// 		.moduleNav {
+	// 			@include grid-column($columns:12, $collapse:true);
+	// 		}
+	// 	}
+	// }
+
+	// // 2 column layout. Page has content and navigation.
+	// &.containsConNav,
+	// // 2 column layout. Page has content and related.
+	// &.containsConRel,
+	// // 1 column layout. Page has content.
+	// &.containsCon {
+
+	// 	.publication {
+		
+	// 		.persistent {
+	// 			@include grid-column($columns:12, $collapse:true);
+
+	// 			@media #{$medium-up} {
+	// 				@include grid-column($columns:4, $collapse:true);
+	// 				float: right;
+	// 				padding-left: $column-gutter/2;			
+	// 			}
+	// 		}
+
+	// 		.moduleNav {
+	// 			@include grid-column($columns:12, $collapse:true);
+
+	// 			@media #{$medium-up} {
+	// 				@include grid-column($columns:8,$collapse:true);
+	// 				padding-right: $column-gutter/2;	
+	// 			}
+	// 		}
+	// 	}
+	// }
+//}
+
+#meat .publication {
+
+	// Common
+	.date {
+		color: $aluminum;
+		font-size: rem-calc(14);
+	}
+
+	.back {
+		margin-top: 0;
+		text-align: left;
+
+		div {
+			
+			a {
+				@include inline-icon($icon: $fa-var-mail-reply);
+			}
+		}
+	}
+
+	// Search and Filter styles
+	.persistent {
+		border: none;
+
+		.loginlogout {
+			margin: $horizontal-gutter/4 $column-gutter/2 0 0;
+			text-align: right;
+			font-size: rem-calc(14);
+
+			a {
+				@include inline-icon($pseudo: after, $icon: $fa-var-lock);
+			}
+		}
+	}
+
+	// List of Posts
+	.moduleNav {
+
+		// Heading when a seach term is applied: "Results for 'News Story'"
+		.searchTitle {
+			text-transform: uppercase;
+			font-size: rem-calc(15);
+			font-weight: 700;
+		}
+
+		// Heading when a filter is applied: "Posts tagged with 'Category 2'"
+		.filterMessage {
+			
+			h3 {
+				text-transform: uppercase;
+				font-size: rem-calc(15);
+				font-weight: 700;
+				//margin-bottom: $column-gutter;
+				// @include alert($radius: $global-radius);
+				// background: red;
+
+				.clear {
+					font-weight: 700;
+					
+					a {
+						padding: 0 rem-calc(4);
+						display: inline-block;
+						@include inline-icon($icon: $fa-var-mail-reply);
+					}
+				}
+			}
+		}
+		
+		.posts {
+			margin: 0;
+
+			.post {
+				border-top: 2px solid $smoke;
+				padding: $horizontal-gutter/1.5 0; 
+				list-style-type: none;
+
+				@media #{$small-only} {
+					&:last-of-type {
+						border-bottom: 2px solid $smoke;
+						margin-bottom: $horizontal-gutter;
+					}
+				}
+
+				@media #{$medium-up} {
+					padding: $horizontal-gutter $column-gutter/1.5; 
+					border: 1px solid $smoke;
+					box-shadow: rgba(black, .25) 0 1px 1px;
+					margin-bottom: $horizontal-gutter;
+				}
+
+				.teaserImage {
+					float: right;
+					margin: 0 0 $horizontal-gutter/2 $column-gutter/2;
+
+					@media #{$small-only} {
+						max-width: 100px;
+					}
+				}
+
+				.title {
+					margin: 0;
+					font-size: $h3-font-size;
+					font-weight: 400;
+				}
+
+				.date {
+					margin: 0;
+				}
+
+				.desc {
+					margin-top: rem-calc(16);
+				}
+
+				.links {
+					margin: 0;
+					padding: 0;
+
+					li {
+						display: inline-block;
+						margin-right: rem-calc(12);
+
+						a {
+							&:before {
+								@extend .fa-fw;
+							}
+						}
+
+						&.more a {
+							@include inline-icon($icon: $fa-var-share);
+						}
+
+						&.permalink a {
+							@include inline-icon($icon: $fa-var-bookmark);
+						}
+						&.comments a {
+							@include inline-icon($icon: $fa-var-comment);
+						}
+					}
+				}
+			}
+		}
+
+		.feedLink {
+			margin-bottom: $horizontal-gutter;
+
+			a {
+				@include feed-button();
+			}
+			
+			.feedInfo a {
+				@include inline-icon($icon: $fa-var-rss);
+			}
+		}
+	}
+
+	// Full Post
+
+	&.fullPostDisplay {
+		position: relative;
+
+		.persistent {
+			display: none;
+		}
+
+		.back {
+			margin-bottom: $horizontal-gutter;
+		}
+
+		.fullPost {
+			@include grid-row();
+			
+			.firstChunk {
+				@include grid-column($columns:12,$collapse:true);
+
+				@media #{$medium-up} {
+					@include grid-column($columns:8,$collapse:true);
+					padding-right: $column-gutter/2;
+				}
+
+				.commentAdded {
+					@include cloak-alert($mode: info);
+
+					h4 {
+						color: $body-font-color;
+						font-size: rem-calc(16);
+						@include inline-icon($icon: $fa-var-info-circle);
+						display: block;
+						padding: 0;
+					}
+				}
+
+				.postTitle {
+				}
+
+				.date {
+				}
+
+				.text {
+					margin-top: $horizontal-gutter;
+				}
+			}
+
+			.relatedItems {
+				@include grid-column($columns:12,$collapse:true);
+				max-width: 400px;
+				margin: 0 auto;
+				float: none;
+
+				> div {
+					border-bottom: 1px solid #efefef;
+				}
+
+				@media #{$medium-up} {
+					@include grid-column($columns:4,$collapse:true);
+					padding-left: $column-gutter/2;
+				}
+
+				h4 {
+					font-size: $h4-font-size;
+					margin-top: 0;
+				}
+
+				> div {
+					margin-bottom: $horizontal-gutter/2;
+				}
+
+				.relatedEvents {
+					
+					ul {
+						margin: 0;
+
+						li {
+							list-style-type: none;
+							margin-bottom: $horizontal-gutter/2;
+							@include inline-icon($icon: $fa-var-calendar);
+						}
+					}
+				}
+
+				.images {
+
+					ul {
+						margin: 0;
+					
+						li {
+							list-style-type: none;
+						}
+					}
+				}
+
+				.assets {
+					// inherits styles from _assets.scss
+				}
+
+				.categories {
+					ul {
+						margin: 0;
+					}
+
+					li {
+						display: inline-block;
+						margin: 0 rem-calc(8) $horizontal-gutter/2 0;
+						white-space: pre;
+
+						a {
+							@include inline-icon($icon: $fa-var-folder-o, $color: $monsoon);
+						}
+
+						strong {
+							@include inline-icon($icon: $fa-var-folder-open-o, $color: inherit);
+						}
+					}
+				}
+			}
+
+			.secondChunk {
+				@include grid-column($columns:12,$collapse:true);
+
+				.nextPrev {
+					border-top: 6px solid $silver;
+					border-bottom: 2px solid $silver;
+					padding: $horizontal-gutter*2 0;
+					text-transform: uppercase;
+					margin-bottom: $horizontal-gutter;
+
+					h4 {
+						font-size: rem-calc(14);
+						margin: 0;
+					}
+
+					p {
+						margin: 0;
+					}
+
+					a {
+						text-transform: none;
+					}
+
+					.prev,
+					.next {
+						width: 100%;
+						float: none;
+						text-align: center;
+						border: none;
+						padding: 0;
+					}
+
+					.prev {				
+						margin-bottom: $horizontal-gutter;
+						
+						&.only {
+							width: 100%;
+							text-align: center;
+							margin-bottom: 0;
+						}
+
+						a {
+							@include inline-icon($icon: $fa-var-angle-double-left);
+						}
+					}
+					
+					.next {
+
+						&.only {
+							width: 100%;
+							text-align: center;
+						}
+
+						a {
+							@include inline-icon($pseudo: after, $icon: $fa-var-angle-double-right);
+						}
+					}
+				}
+
+				.comments {
+					ul {
+						margin: 0;
+						@include clearfix;
+					}
+
+					li {
+						background: none;
+						padding: 0;
+						margin: 0 0 $horizontal-gutter;
+						list-style-type: none;
+
+						a[name^='comment'] {
+							@include anchor-padding-menu();
+						}
+
+						.datetime {
+							float: right;
+							text-align: right;
+							width: 50%;
+							font-size: rem-calc(14);
+							margin-bottom: rem-calc(8);
+						}
+
+						.author {
+							float: left;
+							width: 50%;
+							font-size: rem-calc(18);
+							font-weight: 700;
+							margin-bottom: rem-calc(8);
+						}
+
+						.commentContent {
+							border: 1px solid $gainsboro;
+							clear: both;
+							padding: $horizontal-gutter;
+							border-radius: $global-radius;
+							line-height: 1.2 !important;
+
+							*:last-child {
+								padding-bottom: 0;
+								margin-bottom: 0;
+							}
+						}
+					}
+				}
+				
+				.comments,
+				.addCommentForm {
+					max-width: rem-calc(600);
+					margin: 0 auto;
+				}
+
+				a[name="comments"],
+				a[name="addComment"] {
+					// Adds non-visible padding to the top of the named anchor to space it out from the top of the browser
+					@include anchor-padding-menu;
+				}
+
+				.addCommentForm {
+
+					// Comments on, but off for individual story
+					.commentsOff {
+						
+						@include cloak-alert($mode: info, $symbol: $fa-var-toggle-off);
+
+						h4 {
+							padding: 0;
+							margin: 0;
+							font-size: rem-calc(16);
+						}
+					}
+
+					// Comments on, but not for this user
+					.notPermitted {
+
+						.subContent {
+							@include cloak-alert($mode: warning, $symbol: $fa-var-ban);
+						}	
+					}
+
+					// Comments on, but login first
+					.loginRequired {
+
+						.subContent {
+							@include cloak-alert($mode: warning, $symbol: $fa-var-power-off);
+						}	
+					}
+				}
+			}
+		}
+	}
+}
