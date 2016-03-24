@@ -40,8 +40,9 @@
 			$es->set_order('rel_sort_order');
 			$timelines = $es->run_one();
 
-			foreach($timelines as $timeline)
+			if (!empty($timelines))
 			{
+				$timeline = reset($timelines);
 				$timeline_dom_id = uniqid('timeline_');
 				$json = [
 					'title' => [],
@@ -49,7 +50,6 @@
 					'eras' => [],
 					'scale' => 'human'
 				];
-
 				$es = new entity_selector($this->site_id);
 				$es->add_type(id_of('timeline_item_type'));
 				$es->add_right_relationship($timeline->_id, relationship_id_of('timeline_to_timeline_item'));
