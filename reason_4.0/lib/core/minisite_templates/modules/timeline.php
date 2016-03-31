@@ -9,9 +9,9 @@
 		function init( $args = array() )
 		{
 			$head_items = $this->get_head_items();
-			$head_items->add_javascript('https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js');
-			$head_items->add_stylesheet('https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css');
-			$head_items->add_stylesheet('https://cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.abril-droidsans.css');
+			$head_items->add_javascript('//cdn.knightlab.com/libs/timeline3/latest/js/timeline.js');
+			$head_items->add_stylesheet('//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css');
+			$head_items->add_stylesheet('//cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.abril-droidsans.css');
 		}
 
 		function has_content()
@@ -153,7 +153,7 @@
 				$json = json_encode($json);
 
 				echo "
-				<div id=\"$timeline_dom_id\"></div>
+				<div id=\"$timeline_dom_id\" style=\"width: 100%; height: 600px\"></div>
 				<script>
 					if (!window.timelines) window.timelines = []
 					timelines.push(new TL.Timeline('$timeline_dom_id', $json))
